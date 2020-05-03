@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Hash;
 
+
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -16,6 +17,12 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
+//    public $rules =  [
+//'name' => 'required|string',
+//'username' => 'required|string',
+//'email' => 'required|email|unique:users',
+//'password' => 'required|string|min:6|max:10'
+//];
     protected $fillable = [
         'name', 'email', 'password', 'username', 'number', 'max_token_count', 'client_id', 'enabled'
     ];
@@ -74,7 +81,33 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Client::class);
     }
 
+
+//    public function roles(){
+//        return $this->belongsToMany(Role::class, 'user_roles', 'role_id', 'user_id');
+//    }
+
     public function roles(){
-        return $this->belongsToMany(Role::class, 'user_roles', 'role_id', 'user_id');
+        return $this->belongsToMany(Role::class);
     }
+
+    public function phone(){
+        return $this->hasOne(Phone::class);
+    }
+
+    public function posts(){
+        return $this->hasMany(\App\Post::class);
+    }
+
+    public function comment(){
+        return $this->hasMany(Comments::class);
+    }
+
+
+
+
+
+
+
+
+
 }

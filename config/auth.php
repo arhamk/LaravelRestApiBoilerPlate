@@ -52,6 +52,11 @@ return [
             'provider' => 'clients',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -80,6 +85,11 @@ return [
             'driver' => 'eloquent',
             'model' => App\Client::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',

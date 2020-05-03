@@ -23,4 +23,10 @@ class Role extends Model
     public function getTableColumns() {
         return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
     }
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
+
+
 }

@@ -49,4 +49,6 @@ $api->version('v1', function (Router $api) {
             $api->post('create', 'App\Http\Controllers\Api\V1\UserController@store');
         });
     });
+
+
 });
